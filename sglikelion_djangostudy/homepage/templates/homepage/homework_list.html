@@ -12,9 +12,10 @@
                 {{ homework.published_date }}
             </div>
             {% if homework.screenshot %}
-                <img src="{{ homework.screenshot.url }}" alt="">
+                <img src="{{ homework.screenshot.url }}" alt="" width="100%" height="100%">
             {% endif %}
-            <h1><a href="{% url 'homework_detail' pk=homework.pk %}">{{ homework.title }}</a></h1>
+            <h3><a href="{% url 'homework_detail' pk=homework.pk %}">{{ homework.title }}</a></h3>
+            <p>{{ homework.author }}<p>
         </div>
     {% endfor %}
 {% endblock %}
