@@ -1,0 +1,20 @@
+{%extends 'homepage/base.html'%}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="page-header">
+            <a href="{% url 'homework_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        </div>
+    {% endif %}
+    {% for homework in homeworks %}
+        <div class="homework">
+            <div class="date">
+                {{ homework.published_date }}
+            </div>
+            {% if homework.screenshot %}
+                <img src="{{ homework.screenshot.url }}" alt="">
+            {% endif %}
+            <h1><a href="{% url 'homework_detail' pk=homework.pk %}">{{ homework.title }}</a></h1>
+        </div>
+    {% endfor %}
+{% endblock %}

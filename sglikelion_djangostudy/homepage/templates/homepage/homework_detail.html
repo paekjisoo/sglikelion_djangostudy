@@ -1,0 +1,20 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+    <div class="homework">
+        {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'homework_edit' pk=homework.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
+        {% if homework.published_date %}
+            <div class="date">
+                {{ homework.published_date }}
+            </div>
+        {% endif %}
+        {% if homework.screenshot %}
+                <img src="{{ homework.screenshot.url }}" alt="">
+            {% endif %}
+        <h1>{{ homework.title }}</h1>
+        <p>{{ homework.text|linebreaksbr }}</p>
+        <a href="{{ homework.hyperlink }}">{{ homework.hyperlink }}</a>
+    </div>
+{% endblock %}

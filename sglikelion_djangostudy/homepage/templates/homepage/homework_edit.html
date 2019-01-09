@@ -1,0 +1,9 @@
+{% extends 'homepage/base.html'%}
+
+{% block content %}
+    <h1>New Homework</h1>
+    <form method="POST" action='' enctype="multipart/form-data" class="homework-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}
