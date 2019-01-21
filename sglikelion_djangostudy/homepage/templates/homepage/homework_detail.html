@@ -4,12 +4,19 @@
     <div>
         {% if user.is_authenticated %}
             <a class="btn btn-default" href="{% url 'homework_edit' pk=homework.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-default"
+            onclick="return confirm('Are you Sure?')"
+            href="{% url 'homework_remove' pk=homework.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
         {% endif %}
+
         {% if homework.published_date %}
             <div class="date">
                 {{ homework.published_date }}
             </div>
+        {% else %}
+            <a class="btn btn-default" href="{% url 'homework_publish' pk=homework.pk %}">Publish</a>
         {% endif %}
+
         {% if homework.screenshot %}
                 <img src="{{ homework.screenshot.url }}" alt="" width="50%">
             {% endif %}

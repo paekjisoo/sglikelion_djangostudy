@@ -21,7 +21,7 @@ def homework_new(request):
         if form.is_valid():
             homework = form.save(commit=False)
             homework.author = request.user
-            homework.published_date = timezone.now()
+            #homework.published_date = timezone.now()
             homework.save()
             return redirect('homework_detail', pk=homework.pk)
     else:
@@ -35,9 +35,24 @@ def homework_edit(request, pk):
         if form.is_valid():
             homework = form.save(commit=False)
             homework.author = request.user
-            homework.published_date = timezone.now()
+            #homework.published_date = timezone.now()
             homework.save()
             return redirect('homework_detail', pk=homework.pk)
     else:
         form = HomeworkForm(instance=homework)
     return render(request, 'homepage/homework_edit.html', {'form': form})
+
+
+def homework_draft_list(request):
+    homework = Homework.objects.filter(published_date__isnull=True).order_by('create_date')
+    return render(request, 'homepage/homework_draft_list.html', {'homeworks': homework})
+
+def homework_publish(request, pk):
+    homework = get_object_or_404(Homework, pk=pk)
+    homework.publish()
+    return redirect('homework_detail', pk=pk)
+
+def homework_remove(request, pk):
+    homework = get_object_or_404(Homework, pk=pk)
+    homework.delete()
+    return redirect('homework_list')

@@ -1,0 +1,11 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+    {% for homework in homeworks %}
+        <div class="homework">
+            <p class="date">created: {{ homework.create_date|date:'d-m-Y' }}</p>
+            <h1><a href="{% url 'homework_detail' pk=homework.pk %}">{{ homework.title }}</a></h1>
+            <p>{{ homework.text|truncatechars:200 }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

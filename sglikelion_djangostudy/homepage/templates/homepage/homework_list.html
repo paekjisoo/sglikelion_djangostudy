@@ -4,6 +4,7 @@
     {% if user.is_authenticated %}
         <div class="page-header">
             <a href="{% url 'homework_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            <a href="{% url 'homework_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>        
         </div>
     {% endif %}
     {% for homework in homeworks %}
