@@ -1,0 +1,1 @@
+web: gunicorn sglikelion_djangostudy.wsgi --log-file -
