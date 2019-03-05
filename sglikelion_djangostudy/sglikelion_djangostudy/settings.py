@@ -20,11 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1^s^b(39($am9@*u%k0ygq61%)ywmpx)ds7w*tie)e!%p_$x)m'
+# SECRET_KEY = '1^s^b(39($am9@*u%k0ygq61%)ywmpx)ds7w*tie)e!%p_$x)m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+# DEBUG = True
+DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 ALLOWED_HOSTS = []
 
 
@@ -121,7 +121,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # 각 media 파일에 대한 URL Prefix
-MEDIA_URL = '/media/' #항상 /로 끝나도ㅗㄱ 설정
+MEDIA_URL = '/media/' #항상 /로 끝나도록 설정
 # MEDIA_URL = 'http://static.myservice.com/media/' 다른 서버로 media 파일 복사시
 
 # 업로드된 파일을 저장할 디렉토리 경로
