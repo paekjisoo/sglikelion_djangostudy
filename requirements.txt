@@ -1,6 +1,6 @@
 dj-database-url
 Django
 pytz
-psycopg2
+psycopg2-binary
 Pillow
 gunicorn
